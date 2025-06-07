@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Team</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_edit_team.css') }}">
+</head>
+<body>
+    <h1>Edit Team: {{ team.name }}</h1>
+    <form method="POST">
+        <label for="name">Team Name:</label>
+        <input type="text" name="name" value="{{ team.name }}" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea name="description">{{ team.description }}</textarea>
+        <br>
+        <label for="game">Game:</label>
+        <input type="text" name="game" value="{{ team.game }}" required>
+        <br>
+        <label for="max_members">Max Members:</label>
+        <input type="number" name="max_members" value="{{ team.max_members }}" required>
+        <br>
+        <button type="submit">Update Team</button>
+    </form>
+    <a href="{{ url_for('admin_teams') }}">Back to Teams</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

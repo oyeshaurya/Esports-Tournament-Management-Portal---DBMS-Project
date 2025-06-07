@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+
+        <!-- Statistics Section -->
+        <div class="statistics">
+            <h2>Statistics</h2>
+            <div class="stats-box">
+                <p><strong>Total Users:</strong> {{ users_count }}</p>
+                <p><strong>Total Tournaments:</strong> {{ tournaments_count }}</p>
+                <p><strong>Total Teams:</strong> {{ teams_count }}</p>
+                <p><strong>Total Matches:</strong> {{ matches_count }}</p>
+            </div>
+        </div>
+
+        <!-- Latest Users, Tournaments, and Matches -->
+        <div class="info-boxes">
+            <div class="info-box">
+                <h2>Latest Users</h2>
+                <ul>
+                    {% for user in latest_users %}
+                        <li>{{ user.name }} ({{ user.email }})</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h2>Latest Tournaments</h2>
+                <ul>
+                    {% for tournament in latest_tournaments %}
+                        <li>{{ tournament.name }} (Starts: {{ tournament.start_date }})</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h2>Upcoming Matches</h2>
+                <ul>
+                    {% for match in upcoming_matches %}
+                        <li>{{ match.team1.name }} vs {{ match.team2.name }} on {{ match.match_date }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Logout Button -->
+        <a class="logout-btn" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>

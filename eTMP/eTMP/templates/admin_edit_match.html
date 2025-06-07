@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Match</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_edit_match.css') }}">
+</head>
+<body>
+    <h1>Edit Match</h1>
+    <form method="POST">
+        <label for="team1">Team 1:</label>
+        <select name="team1_id">
+            {% for team in teams %}
+                <option value="{{ team.team_id }}" {% if team.team_id == match.team1_id %}selected{% endif %}>{{ team.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="team2">Team 2:</label>
+        <select name="team2_id">
+            {% for team in teams %}
+                <option value="{{ team.team_id }}" {% if team.team_id == match.team2_id %}selected{% endif %}>{{ team.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="match_date">Match Date:</label>
+        <input type="datetime-local" name="match_date" value="{{ match.match_date }}" required>
+        <br>
+        <button type="submit">Update Match</button>
+    </form>
+    <a href="{{ url_for('admin_matches') }}">Back to Matches</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html> 

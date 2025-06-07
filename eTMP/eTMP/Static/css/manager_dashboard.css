@@ -1,0 +1,181 @@
+/* Reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Orbitron', sans-serif; /* Matching font to home.css */
+    background: linear-gradient(135deg, #2d0b3f, #120016); /* Darker gradient background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: #e0e0e0;
+    position: relative;
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+/* Glowing orb (dimmer effect) */
+body::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 0, 128, 0.1), transparent 70%);
+    top: -100px;
+    right: -100px;
+    z-index: 0;
+}
+
+/* Heading with glow */
+h1 {
+    font-size: 2.5rem;
+    color: #08d9d6; /* Cyan color similar to home.css */
+    text-shadow: 0 0 10px #08d9d6, 0 0 20px #00b8d4; /* Glow effect */
+    margin-top: 30px;
+    z-index: 1;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    z-index: 1;
+    width: 80%;
+    margin-top: 40px;
+    max-width: 1200px; /* Prevent it from becoming too wide */
+}
+
+/* Left Column (Create Tournament) */
+.left-column {
+    flex: 1 1 35%;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.05); /* Transparent background */
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.1); /* Cyan glow */
+    backdrop-filter: blur(8px); /* Slight blur for background */
+}
+
+.left-column h2 {
+    margin-top: 0;
+    color: #08d9d6; /* Cyan color */
+    text-shadow: 0 0 10px #08d9d6, 0 0 20px #00b8d4; /* Glow effect */
+}
+
+/* Form Styling */
+form input,
+form textarea,
+form select,
+form button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #00b8d4; /* Light cyan border */
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1); /* Slight transparency */
+    color: #00b8d4; /* Cyan color for text */
+    font-size: 1rem;
+    text-shadow: 0 0 5px #00b8d4; /* Subtle glow for text */
+}
+
+/* Button Styling */
+form button {
+    background: transparent;
+    color: #00b8d4;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid #00b8d4;
+    transition: 0.3s ease;
+}
+
+form button:hover {
+    background: #00b8d4; /* Cyan background */
+    color: #120016; /* Dark background color for contrast */
+    box-shadow: 0 0 25px #08d9d6, 0 0 35px #00b8d4;
+}
+
+/* Right Column (Data Sections) */
+.right-column {
+    flex: 2 1 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    overflow-y: auto;
+}
+
+/* Data Cards */
+.data-box {
+    background: rgba(255, 255, 255, 0.05); /* Transparent background */
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.1); /* Cyan glow */
+    backdrop-filter: blur(8px);
+    width: 100%;
+    max-width: 500px;
+}
+
+.data-box h2 {
+    color: #08d9d6; /* Cyan color */
+    text-shadow: 0 0 10px #08d9d6, 0 0 20px #00b8d4; /* Glow effect */
+}
+
+/* List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.1); /* Slight transparent background */
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+    text-shadow: 0 0 5px #00b8d4;
+}
+
+/* Remove cursor blinking */
+a {
+    pointer-events: none; /* Prevent clicking from causing the cursor to blink */
+    text-decoration: none; /* Remove underline from links */
+}
+
+/* Logout Button */
+.logout {
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid #ff4f4f; /* Soft red border */
+    color: #ff4f4f; /* Soft red text */
+    border-radius: 50px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    box-shadow: 0 0 10px #ff4f4f; /* Subtle glow effect */
+    transition: 0.3s ease;
+}
+
+.logout:hover {
+    background: #ff4f4f; /* Soft red background */
+    color: #120016; /* Dark background for contrast */
+    box-shadow: 0 0 25px #ff66cc, 0 0 35px #ff4f4f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        width: 90%;
+    }
+}

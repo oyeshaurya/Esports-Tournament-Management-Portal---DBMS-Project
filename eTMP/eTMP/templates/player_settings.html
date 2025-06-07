@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/player_settings.css') }}">
+</head>
+<body>
+    <h1>Player Settings</h1>
+    <form method="POST">
+        <label for="notification_preferences">Notification Preferences:</label>
+        <select name="notification_preferences">
+            <option value="email" {% if user.notification_preferences == 'email' %}selected{% endif %}>Email</option>
+            <option value="sms" {% if user.notification_preferences == 'sms' %}selected{% endif %}>SMS</option>
+            <option value="none" {% if user.notification_preferences == 'none' %}selected{% endif %}>None</option>
+        </select>
+        <br>
+        <label for="privacy_settings">Privacy Settings:</label>
+        <select name="privacy_settings">
+            <option value="public" {% if user.privacy_settings == 'public' %}selected{% endif %}>Public</option>
+            <option value="friends" {% if user.privacy_settings == 'friends' %}selected{% endif %}>Friends Only</option>
+            <option value="private" {% if user.privacy_settings == 'private' %}selected{% endif %}>Private</option>
+        </select>
+        <br>
+        <button type="submit">Update Settings</button>
+    </form>
+    <a href="{{ url_for('user_profile') }}">Back to Profile</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

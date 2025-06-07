@@ -1,0 +1,106 @@
+/* player_team_view.css */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tomorrow', sans-serif; /* Futuristic font */
+    background-color: #0d0f12; /* Dark background */
+    color: #fcee09; /* Neon yellow text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+    min-height: 100vh; /* Full viewport height */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px; /* Padding for the body */
+}
+
+/* Glowing effect for the heading */
+h1 {
+    font-size: 4rem; /* Large heading */
+    text-shadow: 0 0 20px #fcee09, 0 0 30px #ff003c; /* Neon glow */
+    margin-bottom: 20px;
+}
+
+/* Section headings */
+h2 {
+    font-size: 2.5rem; /* Medium heading */
+    margin: 30px 0 10px; /* Margin for spacing */
+    text-shadow: 0 0 15px #00f0ff; /* Neon blue glow */
+}
+
+/* List styling */
+ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 20px 0; /* Margin for spacing */
+    width: 100%; /* Full width */
+    max-width: 600px; /* Limit width for better readability */
+}
+
+/* List item styling */
+li {
+    margin: 15px 0; /* Space between list items */
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 15px; /* Padding for list items */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5); /* Glowing effect */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+li:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Link styling */
+a {
+    color: #00f0ff; /* Neon blue link */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5rem; /* Larger text for links */
+    transition: color 0.3s; /* Smooth transition */
+}
+
+a:hover {
+    color: #fcee09; /* Change text color on hover */
+    text-shadow: 0 0 10px #ff003c; /* Glow effect on hover */
+}
+
+/* Additional links styling */
+a.button {
+    display: inline-block; /* Make links block elements */
+    margin-top: 20px; /* Space above the button */
+    padding: 10px 20px; /* Padding for button */
+    background-color: #00f0ff; /* Neon blue button */
+    color: #050a0e; /* Dark text */
+    border-radius: 5px; /* Rounded corners */
+    transition: background 0.3s, color 0.3s; /* Smooth transition */
+}
+
+a.button:hover {
+    background-color: #00c0cc; /* Darker blue on hover */
+}
+
+/* Background animation */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5));
+    animation: background-glow 5s infinite alternate;
+    z-index: -1; /* Place behind content */
+}
+
+@keyframes background-glow {
+    0% { background-color: #0d0f12; }
+    100% { background-color: #1a1a1a; }
+}

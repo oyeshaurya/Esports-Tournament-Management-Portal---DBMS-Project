@@ -1,0 +1,114 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #1a001f, #120016);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #e0e0e0;
+    position: relative;
+}
+
+/* Glowing orb background */
+body::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 0, 128, 0.2), transparent 70%);
+    top: -120px;
+    left: -120px;
+    z-index: 0;
+}
+
+/* Login box */
+.login-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 60px 80px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 0, 128, 0.4), 0 0 40px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    text-align: center;
+    z-index: 1;
+}
+
+/* Heading */
+h1 {
+    font-size: 3rem;
+    color: #ff2e63;
+    text-shadow: 0 0 10px #ff2e63, 0 0 20px #08d9d6;
+    margin-bottom: 50px;
+}
+
+/* Form Elements */
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+label {
+    font-size: 1.2rem;
+    color: #fcee09;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #08d9d6;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fcee09;
+    font-size: 1.1rem;
+    outline: none;
+    box-shadow: 0 0 10px rgba(8, 217, 214, 0.4);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 50px;
+    background-color: #08d9d6;
+    color: #1a001f;
+    cursor: pointer;
+    box-shadow: 0 0 15px #08d9d6, 0 0 25px #ff2e63;
+    transition: 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ff2e63;
+    color: #fff;
+    box-shadow: 0 0 30px #ff2e63, 0 0 40px #08d9d6;
+}
+
+/* Link */
+p {
+    margin-top: 30px;
+}
+
+a {
+    color: #08d9d6;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    color: #fcee09;
+    text-shadow: 0 0 10px #ff003c;
+}

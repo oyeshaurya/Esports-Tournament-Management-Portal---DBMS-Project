@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Tournament</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_tournament.css') }}">
+</head>
+<body>
+    <h1>Edit Tournament: {{ tournament.name }}</h1>
+    <form method="POST">
+        <label for="name">Tournament Name:</label>
+        <input type="text" name="name" value="{{ tournament.name }}" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea name="description">{{ tournament.description }}</textarea>
+        <br>
+        <label for="start_date">Start Date:</label>
+        <input type="datetime-local" name="start_date" value="{{ tournament.start_date }}" required>
+        <br>
+        <label for="end_date">End Date:</label>
+        <input type="datetime-local" name="end_date" value="{{ tournament.end_date }}" required>
+        <br>
+        <label for="game">Game:</label>
+        <input type="text" name="game" value="{{ tournament.game }}" required>
+        <br>
+        <label for="max_teams">Max Teams:</label>
+        <input type="number" name="max_teams" value="{{ tournament.max_teams }}" required>
+        <br>
+        <label for="location">Location:</label>
+        <input type="text" name="location" value="{{ tournament.location }}">
+        <br>
+        <label for="tournament_type">Tournament Type:</label>
+        <select name="tournament_type">
+            <option value="Online" {% if tournament.tournament_type == 'Online' %}selected{% endif %}>Online</option>
+            <option value="LAN" {% if tournament.tournament_type == 'LAN' %}selected{% endif %}>LAN</option>
+            <option value="Hybrid" {% if tournament.tournament_type == 'Hybrid' %}selected{% endif %}>Hybrid</option>
+        </select>
+        <br>
+        <label for="prize_pool">Prize Pool:</label>
+        <input type="number" step="0.01" name="prize_pool" value="{{ tournament.prize_pool }}">
+        <br>
+        <button type="submit">Update Tournament</button>
+    </form>
+    <a href="{{ url_for('view_tournament', tournament_id=tournament.tournament_id) }}">Back to Tournament</a>
+    <a href="{{ url_for('manager_tournaments') }}">Back to Tournaments</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

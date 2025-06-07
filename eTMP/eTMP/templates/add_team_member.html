@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Team Member</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/add_team_member.css') }}" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 90%;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .links a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Add Member to Team: {{ team.name }}</h1>
+    <form method="POST">
+      <label for="user_id">Select User:</label>
+      <select name="user_id" required>
+        {% for user in available_users %}
+          <option value="{{ user.id }}">{{ user.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="role">Role:</label>
+      <input type="text" name="role" required />
+
+      <button type="submit">Add Member</button>
+    </form>
+
+    <div class="links">
+      <a href="{{ url_for('view_team', team_id=team.team_id) }}">Back to Team</a>
+      <a href="{{ url_for('manager_teams') }}">Back to Teams</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tournament.name }} - Tournament View</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_tournament.css') }}">
+</head>
+<body>
+    <h1>{{ tournament.name }}</h1>
+    <p>Description: {{ tournament.description }}</p>
+    <p>Start Date: {{ tournament.start_date }}</p>
+    <p>End Date: {{ tournament.end_date }}</p>
+    <p>Game: {{ tournament.game }}</p>
+    <p>Max Teams: {{ tournament.max_teams }}</p>
+    <p>Location: {{ tournament.location }}</p>
+    <p>Tournament Type: {{ tournament.tournament_type }}</p>
+    <p>Prize Pool: {{ tournament.prize_pool }}</p>
+
+    <h2>Matches</h2>
+    <ul>
+        {% for match in matches %}
+            <li><a href="{{ url_for('view_match', match_id=match.match_id) }}">{{ match.team1.name }} vs {{ match.team2.name }} on {{ match.match_date }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('edit_tournament', tournament_id=tournament.tournament_id) }}">Edit Tournament</a>
+    <a href="{{ url_for('manager_tournaments') }}">Back to Tournaments</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

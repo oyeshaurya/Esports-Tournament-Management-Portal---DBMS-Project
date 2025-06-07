@@ -1,0 +1,108 @@
+/* edit_team.css */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow', sans-serif; /* Use a clean, futuristic font */
+    background-color: #050a0e; /* Dark background */
+    color: #fcee09; /* Neon yellow text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+    min-height: 100vh; /* Full viewport height */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px; /* Padding for the body */
+}
+
+/* Glowing effect for the heading */
+h1 {
+    font-size: 3.5rem; /* Large heading */
+    text-shadow: 0 0 20px #fcee09, 0 0 30px #ff003c; /* Neon glow */
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.5); /* Glowing effect */
+    margin-bottom: 30px;
+}
+
+/* Label styling */
+label {
+    font-size: 1.2rem; /* Medium text size */
+    margin: 10px 0;
+    display: block; /* Block display for labels */
+}
+
+/* Input and textarea styling */
+input[type="text"],
+input[type="number"],
+textarea {
+    padding: 10px;
+    border: 2px solid #00f0ff; /* Neon blue border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    color: #fcee09; /* Neon yellow text */
+    font-size: 1rem; /* Standard text size */
+    margin-bottom: 20px; /* Space between inputs */
+}
+
+/* Button styling */
+button {
+    background-color: #00f0ff; /* Neon blue button */
+    color: #050a0e; /* Dark text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for button */
+    font-size: 1.2rem; /* Slightly larger text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s, color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #00c0cc; /* Darker blue on hover */
+}
+
+/* Link styling */
+a {
+    color: #00f0ff; /* Neon blue link */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem; /* Slightly larger text */
+    margin-top: 20px; /* Space above the link */
+    display: inline-block; /* Make link a block element */
+    transition: color 0.3s; /* Smooth transition */
+}
+
+a:hover {
+    color: #fcee09; /* Change text color on hover */
+    text-shadow: 0 0 10px #ff003c; /* Glow effect on hover */
+}
+
+/* Background animation */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5));
+    animation: background-glow 5s infinite alternate;
+    z-index: -1; /* Place behind content */
+}
+
+@keyframes background-glow {
+    0% { background-color: #050a0e; }
+    100% { background-color: #1a1a1a; }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Tournaments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_tournaments.css') }}">
+</head>
+<body>
+    <h1>Manage Tournaments</h1>
+    <ul>
+        {% for tournament in tournaments %}
+            <li>
+                {{ tournament.name }} 
+                <a href="{{ url_for('admin_edit_tournament', tournament_id=tournament.tournament_id) }}">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

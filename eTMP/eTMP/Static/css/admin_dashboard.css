@@ -1,0 +1,103 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #1a001f, #120016);
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Glowing effect for the heading */
+h1 {
+    font-size: 3.5rem;
+    text-shadow: 0 0 20px #ff2e63, 0 0 30px #08d9d6;
+    margin-bottom: 20px;
+}
+
+/* Subheading styling */
+h2 {
+    font-size: 2.2rem;
+    margin: 20px 0;
+    text-shadow: 0 0 15px #ff2e63;
+}
+
+/* Statistic Boxes */
+.statistics .stats-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(8, 217, 214, 0.5);
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.statistics p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* Info boxes layout */
+.info-boxes {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(8, 217, 214, 0.4);
+    width: 30%;
+    min-width: 250px;
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 1.1rem;
+    margin: 8px 0;
+    text-shadow: 0 0 10px #ff2e63;
+}
+
+/* Link and Button Styling */
+a {
+    color: #08d9d6;
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-top: 30px;
+    padding: 12px 25px;
+    background-color: #ff2e63;
+    border-radius: 50px;
+    transition: 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 46, 99, 0.5);
+}
+
+a:hover {
+    background-color: #08d9d6;
+    color: #1a001f;
+    box-shadow: 0 0 30px rgba(8, 217, 214, 0.6);
+}
+
+a.logout-btn {
+    display: inline-block;
+}

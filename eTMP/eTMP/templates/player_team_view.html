@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ team.name }} - Team View</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/player_team_view.css') }}">
+</head>
+<body>
+    <h1>{{ team.name }}</h1>
+    <h2>Team Members</h2>
+    <ul>
+        {% for member in team_members %}
+            <li>{{ member.user.name }} ({{ member.role }})</li>
+        {% endfor %}
+    </ul>
+    <h2>Tournaments</h2>
+    <ul>
+        {% for tournament in tournaments %}
+            <li><a href="{{ url_for('player_tournament_view', tournament_id=tournament.tournament_id) }}">{{ tournament.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Upcoming Matches</h2>
+    <ul>
+        {% for match in upcoming_matches %}
+            <li>{{ match.team1.name }} vs {{ match.team2.name }} on {{ match.match_date }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('player_dashboard') }}">Back to Dashboard</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

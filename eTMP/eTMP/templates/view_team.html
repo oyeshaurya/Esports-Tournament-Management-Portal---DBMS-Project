@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ team.name }} - Team View</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_team.css') }}">
+</head>
+<body>
+    <h1>{{ team.name }}</h1>
+    <p>Description: {{ team.description }}</p>
+    <p>Game: {{ team.game }}</p>
+    <p>Max Members: {{ team.max_members }}</p>
+
+    <h2>Team Members</h2>
+    <ul>
+        {% for member in team_members %}
+            <li>{{ member.user.name }} ({{ member.role }})</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('edit_team', team_id=team.team_id) }}">Edit Team</a>
+    <a href="{{ url_for('manager_teams') }}">Back to Teams</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

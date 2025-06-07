@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/manager_dashboard.css') }}">
+    <style>
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #e3342f;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #cc1f1a;
+        }
+    </style>
+</head>
+<body>
+    <a class="logout-btn" href="/logout">Logout</a>
+
+    <h1>Welcome, {{ user.name }}</h1>
+
+    <div class="dashboard-container">
+
+        <!-- Left Column: Create Tournament -->
+        <div class="left-column">
+            <h2>Create Tournament</h2>
+            <form method="POST" action="{{ url_for('create_tournament') }}">
+                <label for="name">Tournament Name:</label>
+                <input type="text" name="name" required>
+
+                <label for="description">Description:</label>
+                <textarea name="description"></textarea>
+
+                <label for="start_date">Start Date:</label>
+                <input type="datetime-local" name="start_date" required>
+
+                <label for="end_date">End Date:</label>
+                <input type="datetime-local" name="end_date" required>
+
+                <label for="game">Game:</label>
+                <input type="text" name="game" required>
+
+                <label for="max_teams">Max Teams:</label>
+                <input type="number" name="max_teams" required>
+
+                <label for="location">Location:</label>
+                <input type="text" name="location">
+
+                <label for="tournament_type">Tournament Type:</label>
+                <select name="tournament_type">
+                    <option value="Online">Online</option>
+                    <option value="LAN">LAN</option>
+                    <option value="Hybrid">Hybrid</option>
+                </select>
+
+                <label for="prize_pool">Prize Pool:</label>
+                <input type="number" step="0.01" name="prize_pool">
+
+                <button type="submit">Create Tournament</button>
+            </form>
+        </div>
+
+        <!-- Right Column: Data Sections -->
+        <div class="right-column">
+            <div class="data-box">
+                <h2>Your Tournaments</h2>
+                {% if tournaments %}
+                    <ul>
+                        {% for tournament in tournaments %}
+                            <li>
+                                <a href="{{ url_for('view_tournament', tournament_id=tournament.tournament_id) }}">{{ tournament.name }}</a>
+                                |
+                                <a href="{{ url_for('edit_tournament', tournament_id=tournament.tournament_id) }}">Edit</a>
+                                |
+                                <a href="{{ url_for('tournament_matches', tournament_id=tournament.tournament_id) }}">Matches</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No tournaments found.</p>
+                {% endif %}
+            </div>
+
+            <div class="data-box">
+                <h2>Your Teams</h2>
+                {% if teams %}
+                    <ul>
+                        {% for team in teams %}
+                            <li>
+                                <a href="{{ url_for('view_team', team_id=team.team_id) }}">{{ team.name }}</a>
+                                |
+                                <a href="{{ url_for('add_team_member', team_id=team.team_id) }}">Add Member</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No teams found.</p>
+                {% endif %}
+            </div>
+
+            <div class="data-box">
+                <h2>Upcoming Matches</h2>
+                {% if upcoming_matches %}
+                    <ul>
+                        {% for match in upcoming_matches %}
+                            <li>
+                                <a href="{{ url_for('tournament_matches', tournament_id=match.tournament_id) }}">
+                                    {{ match.team1.name }} vs {{ match.team2.name }} on {{ match.match_date }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No upcoming matches.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

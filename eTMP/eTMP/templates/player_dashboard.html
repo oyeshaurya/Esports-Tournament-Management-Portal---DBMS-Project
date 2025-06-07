@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/player_dashboard.css') }}">
+</head>
+<body>
+    <h1>Welcome, {{ user.name }}</h1>
+    <h2>Your Teams</h2>
+    <ul>
+        {% for membership in team_memberships %}
+            <li><a href="{{ url_for('player_team_view', team_id=membership.team_id) }}">{{ membership.team.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Your Tournaments</h2>
+    <ul>
+        {% for tournament in tournaments %}
+            <li><a href="{{ url_for('player_tournament_view', tournament_id=tournament.tournament_id) }}">{{ tournament.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Upcoming Matches</h2>
+    <ul>
+        {% for match in upcoming_matches %}
+            <li><a href="{{ url_for('player_match_view', match_id=match.match_id) }}">{{ match.team1.name }} vs {{ match.team2.name }} on {{ match.match_date }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
